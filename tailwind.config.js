@@ -1,3 +1,5 @@
+import { Container } from 'postcss';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -5,8 +7,22 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+     
+      container : {
+        center : true,
+        padding : {
+          DEFAULT : "1rem",
+          sm : "3rem"
+        }
+      },
+      colors: {
+        brandGreen : "#37fd37"
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
 
