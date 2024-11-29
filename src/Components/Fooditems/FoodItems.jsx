@@ -1,47 +1,37 @@
 import React from "react";
-import FoodData from "../../FoodData/FoodData";
 import { FaStar } from "react-icons/fa";
+import { addtoCart } from "../Slice/CartSlice";
+import { useDispatch } from "react-redux";
 
-function FoodItems() {
+function FoodItems({ id, name, price, rating, img, desc, handleaToast }) {
+  const dispatch = useDispatch();
+
   return (
     <>
-      <div className="py-3">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 sm:grid-cols-3 gap-7  ">
-            {FoodData.map((data, index) => (
-              <div className="bg-white p-5 rounded-md " key={index}>
-                <div className="flex justify-center items-center ">
-                  <img
-                    src={data.img}
-                    alt=""
-                    className="w-[200px] h-[130px] cursor-grab hover:scale-110 duration-500  "
-                  />
-                </div>
-
-                {/* name & price */}
-                <div className="flex justify-between items-center mt-2 gap-3">
-                  <p className="text-sm font-semibold ">{data.name}</p>
-                  <p className="text-[#37fd37] font-semibold">₹{data.price}</p>
-                </div>
-
-                  {/* discription */}
-                <p className="overflow-ellipsis overflow-hidden whitespace-nowrap mt-2">
-                  {data.desc}
-                </p>
-
-                {/* bottom style */}
-                <div className="flex justify-between  mt-3 ">
-                  <div className="flex justify-center items-center gap-2 ">
-                    <FaStar className="text-xl text-yellow-500" />
-                    <p className="text-xl font-bold">{data.rating}</p>
-                  </div>
-                  <button className="py-1 px-2 font-bold text-sm text-white bg-[#37fd37] rounded-lg s">
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="font-bold lg:w-[250px] sm:w-[220px] w-full bg-white p-5 flex flex-col rounded-lg gap-2">
+        <img
+          src={img}
+          alt=""
+          className="w-auto h-[130px]  hover:scale-110 cursor-grab transition-all duration-500 ease-in-out "
+        />
+        <div className="text-sm flex justify-between">
+          <h2>{name}</h2>
+          <span className="text-green-500 ">₹{price}</span>
+        </div>
+        <p className="text-sm font-normal">{desc.slice(0, 50)}...</p>
+        <div className="flex justify-between ">
+          <span className="flex justify-center items-center">
+            <FaStar className="mr-1 text-yellow-400" /> {rating}
+          </span>
+          <button
+            className="p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm"
+            onClick={() => {
+              dispatch(addtoCart({ id, name, price, img, rating, qty: 1 }));
+              handleaToast(name);
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </>

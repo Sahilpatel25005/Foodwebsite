@@ -1,13 +1,12 @@
-import React , {useState} from 'react'
-import Navbar from '../Components/Navbar/Navbar'
-import CategoryMenu from '../Components/Category/CategoryMenu'
-import FoodItems from '../Components/Fooditems/FoodItems'
-import Cart from '../Components/Cart/Cart'
-import Carticon from '../Components/Cart/Carticon'
+import React, { useState } from "react";
+import Navbar from "../Components/Navbar/Navbar";
+import CategoryMenu from "../Components/Category/CategoryMenu";
+import Cart from "../Components/Cart/Cart";
 
+import Items from "../Components/Fooditems/Items";
 
 const Home = () => {
-  const [cartOpen, setCartOpen] = useState(true);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const handleCart = () => {
     setCartOpen(!cartOpen);
@@ -17,11 +16,10 @@ const Home = () => {
     <div>
       <Navbar />
       <CategoryMenu />
-      <FoodItems />
-      <Cart  handleCart={handleCart} cartOpen={cartOpen} />  
-      <Carticon handleCart={handleCart}  />
+      <Items />
+      <Cart handleCart={handleCart} cartOpen={cartOpen} />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

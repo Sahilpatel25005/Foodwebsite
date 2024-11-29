@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { HashLoader } from "react-spinners";
 
 const Success = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3500);
+  }, []);
   return (
-    <div>
-      <h1>Success</h1>
-    </div>
-  )
-}
+    <div className="flex flex-col items-center justify-center h-screen">
+      {loading ? (
+        <HashLoader color="#37fd37" size={100} />
+      ) : (
+        <div className="flex flex-col text-center ">
+          <h2 className="text-3xl font-bold tracking-wide">
+            Order successfull !!
+          </h2>
 
-export default Success
+          <p className=" text-2xl font-semibold mt-3">
+            Your Order has been successfully placed.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Success;
