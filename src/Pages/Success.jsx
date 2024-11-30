@@ -21,6 +21,10 @@ const Success = () => {
           <p className=" text-2xl font-semibold mt-3">
             Your Order has been successfully placed.
           </p>
+
+          <a href="/" className=" underline font-semibold mt-3 text-blue-800">
+            Back to Home..
+          </a>
         </div>
       )}
     </div>
