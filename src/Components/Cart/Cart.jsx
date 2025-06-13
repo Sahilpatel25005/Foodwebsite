@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemCart from "../ItemsCart/ItemCart";
 import { useSelector } from "react-redux";
 import { PiSmileySadBold } from "react-icons/pi";
@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = ({ handleCart, cartOpen }) => {
   const item = useSelector((state) => state.cart.cart);
+  
+  
   const totalAmount = item.reduce(
     (totalItems, item) => totalItems + item.qty * item.price,
     0
@@ -79,7 +81,7 @@ const Cart = ({ handleCart, cartOpen }) => {
           className={`p-2 bg-white rounded-full shadow-md cursor-pointer ${
             totalItems > 0 && "animate-bounce delay-500 transition-all  "
           } `}
-          onClick={handleCart}
+          onClick={handleCart}  
         >
           <FaShoppingCart className="text-2xl " />
         </div>
